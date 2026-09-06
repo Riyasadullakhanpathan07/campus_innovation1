@@ -3,4 +3,5 @@ venv/
 clean-campus/
 __pycache__/
 
-
+.streamlit/
+secrets.toml
