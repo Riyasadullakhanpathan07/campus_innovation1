@@ -1,24 +1,14 @@
-import os
-from dotenv import load_dotenv
-from supabase import create_client
-import streamlit as st
-
-
-
-import os
 import streamlit as st
 from supabase import create_client
-from dotenv import load_dotenv
 
-load_dotenv()
-
-SUPABASE_URL = st.secrets.get("SUPABASE_URL", os.getenv("SUPABASE_URL"))
-SUPABASE_KEY = st.secrets.get("SUPABASE_KEY", os.getenv("SUPABASE_KEY"))
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
 if not SUPABASE_URL or not SUPABASE_KEY:
     raise ValueError("Supabase URL or Key missing in Streamlit Secrets")
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+
 
 def create_complaint(data):
     response = (
@@ -38,14 +28,11 @@ def get_complaints():
         .order("created_at", desc=True)
         .execute()
     )
-
     return response.data
 
 
 def upload_file(file_data, file_name, content_type):
-
     try:
-
         supabase.storage.from_("complaint-files").upload(
             file_name,
             file_data,
@@ -63,10 +50,9 @@ def upload_file(file_data, file_name, content_type):
         return public_url
 
     except Exception as e:
-
         print("File upload error:", e)
-
         return None
+
 
 def update_complaint_status(complaint_id, new_status):
     response = (
@@ -86,10 +72,27 @@ def get_complaint_stats():
     complaints = get_complaints()
 
     total = len(complaints)
-    pending = sum(1 for c in complaints if c.get("status") == "Pending")
-    assigned = sum(1 for c in complaints if c.get("status") == "Assigned")
-    in_progress = sum(1 for c in complaints if c.get("status") == "In Progress")
-    resolved = sum(1 for c in complaints if c.get("status") == "Resolved")
+
+    pending = sum(
+        1 for c in complaints
+        if c.get("status") == "Pending"
+    )
+
+    assigned = sum(
+        1 for c in complaints
+        if c.get("status") == "Assigned"
+    )
+
+    in_progress = sum(
+        1 for c in complaints
+        if c.get("status") == "In Progress"
+    )
+
+    resolved = sum(
+        1 for c in complaints
+        if c.get("status") == "Resolved"
+    )
+
     high_priority = sum(
         1 for c in complaints
         if c.get("priority") in ["High", "Critical"]
