@@ -1,7 +1,6 @@
-import os
 import json
-from google import genai
 import streamlit as st
+from google import genai
 
 GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
 
@@ -10,8 +9,8 @@ if not GEMINI_API_KEY:
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
-def analyze_complaint(title, description, location):
 
+def analyze_complaint(title, description, location):
     prompt = f"""
 You are an AI campus maintenance complaint classifier.
 
