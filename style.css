@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.stApp { 
+    background: 
+        radial-gradient(circle at 10% 10%, rgba(99,102,241,.12), transparent 28%),
+        radial-gradient(circle at 90% 15%, rgba(14,165,233,.10), transparent 25%),
+        linear-gradient(135deg, #f8faff 0%, #eef2ff 52%, #f8fafc 100%);
+    font-family: 'Inter', sans-serif;
+}
+
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header[data-testid="stHeader"] {
+    background: transparent;
+}
+
+.block-container {
+    max-width: 1180px;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+.campus-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 34px 38px;
+    border-radius: 28px;
+    margin-bottom: 28px;
+    background: linear-gradient(135deg, #312e81 0%, #4f46e5 48%, #0ea5e9 100%);
+    box-shadow: 0 20px 45px rgba(49,46,129,.20);
+    color: white;
+}
+
+.campus-hero:before,
+.campus-hero:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,.10);
+}
+
+.campus-hero:before {
+    width: 240px;
+    height: 240px;
+    right: -80px;
+    top: -110px;
+}
+
+.campus-hero:after {
+    width: 150px;
+    height: 150px;
+    right: 150px;
+    bottom: -100px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 7px 13px;
+    border: 1px solid rgba(255,255,255,.28);
+    border-radius: 999px;
+    background: rgba(255,255,255,.12);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+.hero-title {
+    margin: 13px 0 7px;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+}
+
+.hero-subtitle {
+    margin: 0;
+    max-width: 720px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,.88);
+}
+
+.ui-card {
+    background: rgba(255,255,255,.82);
+    border: 1px solid rgba(148,163,184,.20);
+    border-radius: 22px;
+    padding: 25px;
+    margin: 16px 0;
+    box-shadow: 0 12px 35px rgba(15,23,42,.07);
+    backdrop-filter: blur(12px);
+}
+
+.section-title {
+    color: #1e1b4b;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 3px;
+}
+
+.section-caption {
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+.stTextInput > div > div,
+.stTextArea > div > div,
+.stSelectbox > div > div {
+    border-radius: 13px !important;
+}
+
+.stTextInput input,
+.stTextArea textarea {
+    background: rgba(255,255,255,.95) !important;
+    border: 1px solid #dbe2f0 !important;
+    border-radius: 13px !important;
+    color: #172033 !important;
+    transition: all .2s ease;
+}
+
+.stTextInput input:focus,
+.stTextArea textarea:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.12) !important;
+}
+
+.stSelectbox [data-baseweb="select"] > div {
+    border-color: #dbe2f0;
+    border-radius: 13px;
+}
+
+.evidence-card {
+    background: linear-gradient(135deg, #f8f7ff, #f0f9ff);
+    border: 1px solid #e0e7ff;
+    border-radius: 18px;
+    padding: 18px;
+    margin: 12px 0 20px;
+}
+
+.evidence-label {
+    color: #3730a3;
+    font-weight: 800;
+    font-size: 14px;
+}
+.stButton > button {
+    width: 100%;
+    min-height: 52px;
+    border: 0 !important;
+    border-radius: 15px !important;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed) !important;
+    color: white !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    box-shadow: 0 10px 24px rgba(79,70,229,.22);
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(79,70,229,.30);
+}
+.ai-result {
+    background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+    border: 1px solid #c7d2fe;
+    border-radius: 20px;
+    padding: 22px;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(79,70,229,.08);
+}
+
+.ai-result-title {
+    color: #312e81;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.ai-badge {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 4px 5px 4px 0;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid #e0e7ff;
+    color: #3730a3;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.ai-reason {
+    margin-top: 14px;
+    padding: 13px 15px;
+    border-left: 4px solid #6366f1;
+    background: rgba(255,255,255,.75);
+    border-radius: 10px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.stAlert {
+    border-radius: 14px !important;
+}
+[data-testid="stFileUploader"] {
+    background: rgba(255,255,255,.65);
+    border-radius: 15px;
+}
+
+[data-testid="stFileUploaderDropzone"] {
+    border-radius: 14px;
+    border: 1.5px dashed #a5b4fc;
+    background: #f8faff;
+}
+
+
+[data-testid="stCameraInput"] {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+[data-testid="stMetric"] {
+    background: rgba(255,255,255,.82);
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+    padding: 12px 15px;
+    box-shadow: 0 7px 20px rgba(15,23,42,.05);
+}
+
+hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, #c7d2fe, transparent) !important;
+    margin: 25px 0 !important;
+}
+
+@media (max-width: 768px) {
+    .block-container {
+        padding: 1rem;
+    }
+
+    .campus-hero {
+        padding: 25px 22px;
+        border-radius: 22px;
+    }
+
+    .hero-title {
+        font-size: 27px;
+    }
+
+    .ui-card {
+        padding: 18px;
+        border-radius: 18px;
+    }
+}
+
+.portal-page {
+    text-align: center;
+    padding: 45px 20px 20px;
+}
+
+.portal-title {
+    color: #075985;
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.portal-subtitle {
+    color: #0369a1;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.portal-description {
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto 35px;
+}
+
+.portal-card {
+    background: linear-gradient(145deg, #e0f2fe, #f0f9ff);
+    border: 1px solid #bae6fd;
+    border-radius: 24px;
+    padding: 30px 25px;
+    min-height: 220px;
+    box-shadow: 0 12px 30px rgba(14, 165, 233, .12);
+}
+
+.portal-card h3 {
+    color: #075985;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.portal-card p {
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.portal-footer {
+    margin-top: 30px;
+    color: #0369a1;
+    font-size: 13px;
+    font-weight: 600;
+}
+

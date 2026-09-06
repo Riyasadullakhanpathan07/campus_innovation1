@@ -1,0 +1,6 @@
+.env
+venv/
+clean-campus/
+__pycache__/
+
+

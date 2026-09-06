@@ -1,0 +1,12 @@
+streamlit
+
+supabase
+Pillow
+
+Plotly
+Pandas
+python-dotenv
+
+ google-genai
+
+
