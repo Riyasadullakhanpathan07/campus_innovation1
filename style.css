@@ -27,7 +27,7 @@ header[data-testid="stHeader"] {
     margin-bottom: 28px;
     background: linear-gradient(135deg, #312e81 0%, #4f46e5 48%, #0ea5e9 100%);
     box-shadow: 0 20px 45px rgba(49,46,129,.20);
-    color: white;
+    color: rgb(10, 10, 10);
 }
 
 .campus-hero:before,
