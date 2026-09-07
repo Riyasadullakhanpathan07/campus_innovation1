@@ -17,18 +17,36 @@ def create_complaint(data):
         .insert(data)
         .execute()
     )
+
     return response.data
 
 
 def get_complaints():
-    response = (
-        supabase
-        .table("complaints")
-        .select("*")
-        .order("created_at", desc=True)
-        .execute()
-    )
-    return response.data
+    try:
+        response = (
+            supabase
+            .table("complaints")
+            .select("*")
+            .order("created_at", desc=True)
+            .execute()
+        )
+
+        data = response.data
+
+        if data is None:
+            return []
+
+        if isinstance(data, list):
+            return data
+
+        if isinstance(data, dict):
+            return [data]
+
+        return []
+
+    except Exception as e:
+        print("Get complaints error:", e)
+        return []
 
 
 def upload_file(file_data, file_name, content_type):
@@ -55,47 +73,57 @@ def upload_file(file_data, file_name, content_type):
 
 
 def update_complaint_status(complaint_id, new_status):
-    response = (
-        supabase
-        .table("complaints")
-        .update({
-            "status": new_status,
-            "updated_at": "now()"
-        })
-        .eq("id", complaint_id)
-        .execute()
-    )
-    return response.data
+    try:
+        response = (
+            supabase
+            .table("complaints")
+            .update({
+                "status": new_status,
+                "updated_at": "now()"
+            })
+            .eq("id", complaint_id)
+            .execute()
+        )
+
+        return response.data
+
+    except Exception as e:
+        print("Status update error:", e)
+        return []
 
 
 def get_complaint_stats():
     complaints = get_complaints()
 
+    if not isinstance(complaints, list):
+        complaints = []
+
     total = len(complaints)
 
     pending = sum(
         1 for c in complaints
-        if c.get("status") == "Pending"
+        if isinstance(c, dict) and c.get("status") == "Pending"
     )
 
     assigned = sum(
         1 for c in complaints
-        if c.get("status") == "Assigned"
+        if isinstance(c, dict) and c.get("status") == "Assigned"
     )
 
     in_progress = sum(
         1 for c in complaints
-        if c.get("status") == "In Progress"
+        if isinstance(c, dict) and c.get("status") == "In Progress"
     )
 
     resolved = sum(
         1 for c in complaints
-        if c.get("status") == "Resolved"
+        if isinstance(c, dict) and c.get("status") == "Resolved"
     )
 
     high_priority = sum(
         1 for c in complaints
-        if c.get("priority") in ["High", "Critical"]
+        if isinstance(c, dict)
+        and c.get("priority") in ["High", "Critical"]
     )
 
     return {
