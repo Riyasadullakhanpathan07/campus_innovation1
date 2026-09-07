@@ -22,12 +22,24 @@ def show_admin_dashboard():
         st.code(str(e))
         return
 
-    if not complaints:
+    if complaints is None:
         st.info("📭 No complaints have been submitted yet.")
         return
 
-    df = pd.DataFrame(complaints)
+    if isinstance(complaints, dict):
+        complaints = [complaints]
 
+    if not isinstance(complaints, list):
+        st.error("❌ Invalid complaint data received from Supabase.")
+        st.code(str(complaints))
+        return
+
+    if len(complaints) == 0:
+        st.info("📭 No complaints have been submitted yet.")
+        return
+
+    df = pd.DataFrame.from_records(complaints)
+    
     for column in [
         "status",
         "priority",
